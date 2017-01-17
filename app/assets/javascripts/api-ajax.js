@@ -1,18 +1,19 @@
 var call = function(element) {
-  var data = {"htmlElement" => "element"};
+  $('body').css('cursor', 'progress');
+  var element = element
   $.ajax({
     type: "GET",
     url: "/make",
-    data: data,
+    // data: data,
     datatype: "json",
     success: function(data) {
-      console.log(data)
+      element.innerHTML = data["ship_name"];
     },
     error: function(data) {
-    
+      console.log("error");
     },
     complete: function(data) {
-
+      $('body').css('cursor', 'default');
     }
   });
 };
